@@ -11,12 +11,12 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initUi()
+        //initUi()
     }
 
-    private fun initUi(){
-        val factory = RedditDepenpencyInjector.produceRedditViewModelFactory()
-        val viewModel = ViewModelProvider(this, factory)
-            .get(RedditViewModel::class.java)
-    }
+    //private fun initUi(){
+        //val factory = RedditDepenpencyInjector.produceRedditViewModelFactory()
+        //val viewModel = ViewModelProvider(this, factory)
+          //  .get(RedditViewModel::class.java)
+    //}
 }

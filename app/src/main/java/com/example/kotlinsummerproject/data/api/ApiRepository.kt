@@ -1,10 +1,10 @@
 package com.example.kotlinsummerproject.data.api
 
-import com.example.kotlinsummerproject.data.models.RedditPostModel
+import com.example.kotlinsummerproject.data.network.response.RedditResponse
 
 class ApiRepository private constructor(private val dao: ApiDao){
 
-    fun addPost(post: RedditPostModel){
+    fun addPost(post: RedditResponse){
         dao.addPost(post)
     }
 
