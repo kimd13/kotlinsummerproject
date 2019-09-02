@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.example.kotlinsummerproject.R
-import com.example.kotlinsummerproject.utilities.RedditDepenpencyInjector
 
 class MainActivity : AppCompatActivity() {
 

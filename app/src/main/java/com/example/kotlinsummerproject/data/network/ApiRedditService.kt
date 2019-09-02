@@ -10,15 +10,22 @@ import retrofit2.http.GET
 
 interface ApiRedditService {
 
+    //The ApiRedditService Interface is in charge of api calls and the deserialization of the results
+
     @GET(".json")
     fun getRedditPage(): Deferred<RedditResponse>
 
+
     companion object{
-        operator fun invoke(): ApiRedditService {
+        operator fun invoke(
+            connectivityInterceptor: ConnectivityInterceptor
+        ): ApiRedditService {
             //syntax appropriate
             //no need for interceptor
 
-            val okHttpClient = OkHttpClient()
+            val okHttpClient = OkHttpClient.Builder()
+                .addInterceptor(connectivityInterceptor)
+                .build()
             //http client can be created with interceptors
 
             return Retrofit.Builder()
