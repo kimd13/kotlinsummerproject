@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.kotlinsummerproject.data.network.response.RedditResponse
 import com.example.kotlinsummerproject.internal.NoConnectivityException
 
-class RedditNetworkDataSrcImpl (
+class RedditNetworkDataSrcImpl(
     private val apiRedditService: ApiRedditService
 ) : RedditNetworkDataSrc {
 
@@ -21,13 +21,12 @@ class RedditNetworkDataSrcImpl (
 
         //fetchRedditResponse does a call to the api and modifies the MUTABLE version of the live data
 
-        try{
+        try {
             val fetchedRedditPage = apiRedditService
                 .getRedditPage()
                 .await()
             _downloadedRedditResponse.postValue(fetchedRedditPage)
-        }
-        catch(e : NoConnectivityException){
+        } catch (e: NoConnectivityException) {
             Log.e("Connectivity", "No Internet connection...", e)
         }
     }
