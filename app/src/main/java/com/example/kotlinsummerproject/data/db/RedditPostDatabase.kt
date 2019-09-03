@@ -4,10 +4,11 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.example.kotlinsummerproject.data.db.entity.Children
 import com.example.kotlinsummerproject.data.db.postmodel.RedditPostModel
 
 @Database(
-    entities = [RedditPostModel::class],
+    entities = [Children::class],
     version = 1
 )
 abstract class RedditPostDatabase: RoomDatabase(){

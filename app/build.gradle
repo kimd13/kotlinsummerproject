@@ -65,12 +65,20 @@ dependencies {
             dagger.android,
             dagger.androidSupport,
 
+            // Retrofit
+            retrofit.adapter,
+
             // Rx
             rxjava.base,
             rxjava.android,
 
             // Architecture Components
             lifecycle.extensions
+    )
+
+    kapt(
+            dagger.compiler,
+            dagger.androidSupportCompiler
     )
 
     //Time dependencies
