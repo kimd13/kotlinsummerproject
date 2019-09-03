@@ -2,11 +2,12 @@ package com.example.kotlinsummerproject.data.network
 
 import android.content.Context
 import android.net.ConnectivityManager
+import androidx.annotation.VisibleForTesting
 import com.example.kotlinsummerproject.internal.NoConnectivityException
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class ConnectivityInterceptorImpl(context: Context) : ConnectivityInterceptor {
+class ConnectivityInterceptorImpl(context: Context) : Interceptor {
 
     //The connectivity interceptor checks for whether the app is online or not
     //It throws a custom exception in the case where the app is offline
@@ -14,15 +15,15 @@ class ConnectivityInterceptorImpl(context: Context) : ConnectivityInterceptor {
     private val appContext = context.applicationContext
 
     override fun intercept(chain: Interceptor.Chain): Response {
-        if (!isOnline()){
+        if (!isOnline()) {
             throw NoConnectivityException()
         }
         return chain.proceed(chain.request())
     }
 
-    private fun isOnline (): Boolean{
+    @VisibleForTesting fun isOnline(): Boolean {
         val connectivityManager = appContext.getSystemService(Context.CONNECTIVITY_SERVICE)
-        as ConnectivityManager
+                as ConnectivityManager
 
         val networkInfo = connectivityManager.activeNetworkInfo
         return networkInfo != null && networkInfo.isConnected
